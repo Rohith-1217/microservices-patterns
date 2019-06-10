@@ -2,14 +2,17 @@ package com.stackroute;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 
-//@SpringBootApplication
-@Configuration
+/*@Configuration
 @EnableAutoConfiguration
-@ComponentScan
+@ComponentScan*/
+@EnableEurekaClient
+@SpringBootApplication
 public class UserServiceApplication {
 
 	public static void main(String[] args) {
