@@ -3,7 +3,9 @@ package com.stackroute.controller;
 import com.stackroute.domain.User;
 import com.stackroute.exception.UserAlreadyExistsException;
 import com.stackroute.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ public class UserController {
     UserService userService;
 
     @Autowired
+
     public UserController(UserService userService)
     {
         this.userService=userService;
@@ -41,5 +44,6 @@ public class UserController {
     public ResponseEntity<?> getAllUsers()
     {
         return new ResponseEntity(userService.getAllUsers(), HttpStatus.OK);
+
     }
 }

@@ -14,6 +14,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 public class User {
+
     @Id
     int id;
     String firstname;
@@ -72,5 +73,7 @@ public class User {
                 ", lastname='" + lastname + '\'' +
                 ", age=" + age +
                 '}';
+<<<<<<< HEAD
     } */
+
 }
