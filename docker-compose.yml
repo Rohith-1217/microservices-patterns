@@ -1,0 +1,71 @@
+version: "2"
+services:
+
+  apigateway:
+   #image: zuul-service
+    build: Zuul-Api-Service/
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaserver
+#    ports:
+#      - 8060:8060
+#    expose:
+#      - 8060
+
+  eurekaserver:
+    #image: eureka-servcie:latest
+    build: eurekaserver/
+    restart: always
+    network_mode: host
+#    ports:
+#      - 8761:8761
+#    expose:
+#      - 8761
+
+  configserver:
+    build: config-server-service/
+    restart: always
+    network_mode: host
+#    ports:
+#      - 8888:8888
+#    expose:
+#      - 8888
+
+  musicservice:
+    build: Music-Service/
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaserver
+      - configserver
+      - apigateway
+#    ports:
+#      - 9098:9098
+#    expose:
+#      - 9098
+
+  userservice:
+    build: User-Service/
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaserver
+      - configserver
+      - apigateway
+#    ports:
+#      - 8098:8098
+#    expose:
+#      - 8098
+
+  mongodb:
+    image: mongo:3.4-xenial
+    restart: always
+    network_mode: host
+    volumes:
+     - ./muzic:/data/db
+
+#    ports:
+#      - 27017:27017
+#    expose:
+#      - 27017
